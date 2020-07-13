@@ -1,0 +1,22 @@
+Al instalar el paquete se pierden los layers creados, por lo que los sprites se superpondran de manera inexacta.
+
+Para que funcione se debe copiar el fichero "TagManager.asset" en "ProjectSettings" del nuevo proyecto antes de importar el paquete, de esta forma se configurará de forma correcta.
+
+- Layers usados: default y Menu.
+
+- Tags usados en codigo: 
+	floor -> para que mario detecte el suelo
+	Block -> usado para bloques no "solidos"
+	BlockS -> usado cuando un bloque es solido (no cabia de estado)
+	Item -> usado en todos los items
+	Enemy -> usado en todos los enemigos
+	Fire -> usado en el fuego que lanza mario al coger la estrella
+	Player -> jugador
+	
+	-otro usados son: Menu, Ground, MainCamera, GameController y Respawn.
+
+
+El nivel se divide en escenas, para poder probarlas se deben añadir en Build Settings, para que funcione se debe iniciar en la escena "Start" ésta carga las variables de mute, el contador, y es la encargada de mostrar los textos al conseguir puntos (todo esto se encuentra en el objeto "save" que se pasa de escena en escena). Al empezar (pulsar S) se carga el nivel, tras llegar al final se carga la escena de GWwin (ganar), en ella se muestran las monedas y puntos obtenidos (además se suman 5000 puntos por cada vida con la que se llega al final); si por el contrario se pierde se pasa a la escena de GOver (tambien se muestran los puntos obtenidos), tanto al ganar como al perder se puede volver a empezar pulsando s (volver a escena de juego)
+
+
+Para la creación del nivel se han creado los prefabs de bloques etc, además de un punto de inicio (Ipoint) donde aparece Mario, y otros llamados Spawn, que crean los enemigos (cada Spawn crea un enemigo pasado como prefab, en caso de ser un SpawnC este se crea en la posicion del target, se usa para crear enemigos cuando mario llegue al spawnC).
